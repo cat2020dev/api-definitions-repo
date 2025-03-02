@@ -76,7 +76,7 @@ components:
         notes:
           type: string
           description: Additional notes for the booking
-    
+
     Booking:
       type: object
       properties:

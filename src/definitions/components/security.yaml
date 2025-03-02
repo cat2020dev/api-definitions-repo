@@ -1,11 +1,13 @@
-bearerAuth:
-  type: http
-  scheme: bearer
-  bearerFormat: JWT
-  description: JWT token authentication
-
-apiKeyAuth:
-  type: apiKey
-  in: header
-  name: X-API-Key
-  description: API key authentication
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token authentication
+    
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key authentication

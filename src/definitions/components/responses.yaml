@@ -15,7 +15,7 @@ components:
                 items:
                   type: string
                 description: List of specific validation errors
-
+                
     Unauthorized:
       description: Authentication is required or the provided credentials are invalid
       content:

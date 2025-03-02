@@ -10,8 +10,8 @@ paths:
         - Bookings
       requestBody:
         required: true
-        content:
-          application/json:
+        content:  
+          application/json: 
             schema:
               $ref: "../../components/schemas.yaml#/components/schemas/BookingRequest"
       responses:

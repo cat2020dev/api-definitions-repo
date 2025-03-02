@@ -14,7 +14,6 @@ servers:
 
 security:
   - bearerAuth: []
-  - apiKeyAuth: []
 
 paths:
   /properties:
@@ -24,9 +23,9 @@ paths:
 
 components:
   schemas:
-    $ref: "./components/schemas.yaml"
+    $ref: "./components/schemas.yaml#/components/schemas"
   responses:
-    $ref: "./components/responses.yaml"
+    $ref: "./components/responses.yaml#/components/responses"
   securitySchemes:
-    $ref: "./components/security.yaml" 
+    $ref: "./components/security.yaml#/components/securitySchemes" 
     
