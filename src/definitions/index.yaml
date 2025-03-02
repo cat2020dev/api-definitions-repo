@@ -1,0 +1,6 @@
+# Root OpenAPI file aggregating multiple APIs
+openapi: 3.0.0
+info:
+  title: API Definitions
+  version: 1.0.0
+paths: {}
