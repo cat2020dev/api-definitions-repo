@@ -1,0 +1,55 @@
+paths:
+  /properties:
+    post:
+      summary: Create a new property
+      operationId: createProperty
+      security:
+        - bearerAuth: []
+      tags:
+        - Properties
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "../../components/schemas.yaml#/Property"
+      responses:
+        "201":
+          description: Property created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "../../components/schemas.yaml#/PropertyResponse"
+        "400":
+          description: Bad request due to invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "../../components/responses.yaml#/BadRequest"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "../../components/responses.yaml#/InternalServerError"
+    get:
+      summary: List all properties
+      operationId: listProperties
+      security:
+        - bearerAuth: []
+        - apiKeyAuth: []
+      tags:
+        - Properties
+      responses:
+        "200":
+          description: List of properties
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "../../components/schemas.yaml#/Property"
+        "401":
+          $ref: "../../components/responses.yaml#/Unauthorized"
+        "403":
+          $ref: "../../components/responses.yaml#/Forbidden"

@@ -1,0 +1,114 @@
+components:
+  schemas:
+    Property:
+      type: object
+      required:
+        - name
+        - location
+        - price
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the property
+        name:
+          type: string
+          description: Name of the property
+        location:
+          type: string
+          description: Address or location of the property
+        price:
+          type: number
+          format: float
+          description: Price of the property per night
+        description:
+          type: string
+          description: Detailed description of the property
+        amenities:
+          type: array
+          items:
+            type: string
+          description: List of amenities available at the property
+
+    PropertyResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier of the created property
+        name:
+          type: string
+        location:
+          type: string
+        price:
+          type: number
+          format: float
+        description:
+          type: string
+        amenities:
+          type: array
+          items:
+            type: string
+
+    BookingRequest:
+      type: object
+      required:
+        - customerId
+        - propertyId
+        - startTime
+        - endTime
+      properties:
+        customerId:
+          type: string
+          description: Unique identifier of the customer
+        propertyId:
+          type: string
+          description: Unique identifier of the property being booked
+        startTime:
+          type: string
+          format: date-time
+          description: Start time of the booking
+        endTime:
+          type: string
+          format: date-time
+          description: End time of the booking
+        notes:
+          type: string
+          description: Additional notes for the booking
+    
+    Booking:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the booking
+        customerId:
+          type: string
+          description: Unique identifier of the customer
+        propertyId:
+          type: string
+          description: Unique identifier of the property being booked
+        startTime:
+          type: string
+          format: date-time
+          description: Start time of the booking
+        endTime:
+          type: string
+          format: date-time
+          description: End time of the booking
+        status:
+          type: string
+          enum: [PENDING, CONFIRMED, CANCELLED]
+          description: Current status of the booking
+        notes:
+          type: string
+          description: Additional notes for the booking
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the booking was created
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the booking was last updated
