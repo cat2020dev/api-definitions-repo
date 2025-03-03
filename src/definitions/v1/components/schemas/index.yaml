@@ -1,0 +1,82 @@
+components:
+  schemas:
+    # Common schemas
+    common:
+      # Headers
+      headers:
+        bearerToken:
+          $ref: './common/headers.yaml#/components/schemas/bearerToken'
+        apiKey:
+          $ref: './common/headers.yaml#/components/schemas/apiKey'
+        mediaType:
+          $ref: './common/headers.yaml#/components/schemas/mediaType'
+        languageCode:
+          $ref: './common/headers.yaml#/components/schemas/languageCode'
+        eTag:
+          $ref: './common/headers.yaml#/components/schemas/eTag'
+        httpDate:
+          $ref: './common/headers.yaml#/components/schemas/httpDate'
+        cacheControl:
+          $ref: './common/headers.yaml#/components/schemas/cacheControl'
+        rateLimit:
+          $ref: './common/headers.yaml#/components/schemas/rateLimit'
+        unixTimestamp:
+          $ref: './common/headers.yaml#/components/schemas/unixTimestamp'
+        totalCount:
+          $ref: './common/headers.yaml#/components/schemas/totalCount'
+        version:
+          $ref: './common/headers.yaml#/components/schemas/version'
+
+      # Pagination
+      paginationRequest:
+        $ref: './common/pagination.yaml#/components/schemas/paginationRequest'
+      paginationResponse:
+        $ref: './common/pagination.yaml#/components/schemas/paginationResponse'
+      pageNumber:
+        $ref: './common/pagination.yaml#/components/schemas/pageNumber'
+      pageLimit:
+        $ref: './common/pagination.yaml#/components/schemas/pageLimit'
+
+      # Identifiers
+      uuid:
+        $ref: './common/identifiers.yaml#/components/schemas/uuid'
+
+      # Filters
+      status:
+        $ref: './common/filters.yaml#/components/schemas/status'
+      dateFilter:
+        $ref: './common/filters.yaml#/components/schemas/dateFilter'
+
+      # Sorting
+      sortField:
+        $ref: './common/sorting.yaml#/components/schemas/sortField'
+      sortOrder:
+        $ref: './common/sorting.yaml#/components/schemas/sortOrder'
+
+      # Search
+      searchQuery:
+        $ref: './common/search.yaml#/components/schemas/searchQuery'
+
+    # Domain-specific schemas
+    onlineBooking:
+      bookings:
+        booking:
+          $ref: './online-booking/bookings.yaml#/components/schemas/booking'
+        bookingRequest:
+          $ref: './online-booking/bookings.yaml#/components/schemas/bookingRequest'
+      properties:
+        property:
+          $ref: './online-booking/properties.yaml#/components/schemas/property'
+        propertyRequest:
+          $ref: './online-booking/properties.yaml#/components/schemas/propertyRequest'
+
+    # Response schemas
+    responses:
+      successResponse: 
+        $ref: './common/responses.yaml#/components/schemas/successResponse'
+      listResponse:
+        $ref: './common/responses.yaml#/components/schemas/listResponse'
+      createdResponse:
+        $ref: './common/responses.yaml#/components/schemas/createdResponse'
+      errorResponse:
+        $ref: './common/responses.yaml#/components/schemas/errorResponse'

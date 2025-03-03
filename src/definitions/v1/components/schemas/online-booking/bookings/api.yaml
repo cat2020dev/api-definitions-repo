@@ -1,0 +1,80 @@
+components:
+  schemas:
+    # API Request Models
+    createBookingRequest:
+      type: object
+      properties:
+        propertyId:
+          $ref: '../common/types.yaml#/components/schemas/uuid'
+        type:
+          $ref: './types.yaml#/components/schemas/bookingType'
+        dates:
+          $ref: './types.yaml#/components/schemas/bookingDates'
+        guests:
+          $ref: './types.yaml#/components/schemas/bookingGuests'
+        contact:
+          $ref: './types.yaml#/components/schemas/guestContact'
+      required:
+        - propertyId
+        - type
+        - dates
+        - guests
+        - contact
+
+    updateBookingRequest:
+      type: object
+      properties:
+        dates:
+          $ref: './types.yaml#/components/schemas/bookingDates'
+        guests:
+          $ref: './types.yaml#/components/schemas/bookingGuests'
+        contact:
+          $ref: './types.yaml#/components/schemas/guestContact'
+
+    cancelBookingRequest:
+      type: object
+      properties:
+        reason:
+          type: string
+          maxLength: 500
+          example: "Change in travel plans"
+      required:
+        - reason
+
+    # API Response Models
+    bookingResponse:
+      allOf:
+        - $ref: '../common/responses.yaml#/components/schemas/successResponse'
+        - type: object
+          properties:
+            data:
+              $ref: './types.yaml#/components/schemas/booking'
+
+    bookingListResponse:
+      allOf:
+        - $ref: '../common/responses.yaml#/components/schemas/listResponse'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: './types.yaml#/components/schemas/booking'
+
+    # API Parameters
+    bookingQueryParams:
+      type: object
+      properties:
+        status:
+          $ref: './types.yaml#/components/schemas/bookingStatus'
+        type:
+          $ref: './types.yaml#/components/schemas/bookingType'
+        dateRange:
+          $ref: '../common/parameters.yaml#/components/schemas/dateRangeFilter'
+        propertyId:
+          $ref: '../common/types.yaml#/components/schemas/uuid'
+        pagination:
+          $ref: '../common/parameters.yaml#/components/schemas/paginationRequest'
+        sorting:
+          $ref: '../common/parameters.yaml#/components/schemas/sortingRequest'
+        search:
+          $ref: '../common/parameters.yaml#/components/schemas/searchFilter' 

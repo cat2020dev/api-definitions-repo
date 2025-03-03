@@ -1,0 +1,14 @@
+components:
+  responses:
+    created:
+      description: Created - The request has succeeded and a new resource has been created
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/index.yaml#/components/schemas/responses/createdResponse'
+          examples:
+            basic:
+              $ref: '../../examples/common/responses/success.yaml#/components/examples/responses/success/created/basic'
+            detailed:
+              $ref: '../../examples/common/responses/success.yaml#/components/examples/responses/success/created/detailed'
+

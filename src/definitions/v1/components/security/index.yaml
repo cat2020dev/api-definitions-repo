@@ -1,0 +1,54 @@
+components:
+  securitySchemes:
+    bearerAuth:
+      $ref: './schemes/bearer.yaml'
+    apiKey:
+      $ref: './schemes/api-key.yaml'
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.api.example.com/oauth/token
+          refreshUrl: https://auth.api.example.com/oauth/refresh
+          scopes:
+            read: Read access to API resources
+            write: Write access to create, update, and delete API resources
+            admin: Full administrative access to all API resources
+
+  x-scopeRules:
+    validation:
+      requireExplicitGrant: true
+      allowMultiple: true
+      maxScopes: 10
+      validateOnAuth: true
+      validateOnRequest: true
+
+    inheritance:
+      enabled: true
+      strategy: "additive"
+      checkCycles: true
+      maxDepth: 3
+
+    enforcement:
+      strictMode: true
+      auditLog:
+        enabled: true
+        includeRequest: false
+        includeResponse: false
+        events:
+          - scope_validation
+          - scope_inheritance
+          - access_denied
+      
+      caching:
+        enabled: true
+        ttl: "5m"
+        maxEntries: 10000
+
+      errorHandling:
+        insufficientScope:
+          status: 403
+          code: "INSUFFICIENT_SCOPE"
+        invalidScope:
+          status: 401
+          code: "INVALID_SCOPE"

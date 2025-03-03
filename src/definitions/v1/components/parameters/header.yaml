@@ -1,0 +1,44 @@
+components:
+  parameters:
+    # Content negotiation headers
+    accept:
+      name: Accept
+      in: header
+      description: Acceptable response media types
+      required: false
+      schema:
+        type: string
+        pattern: '^[a-zA-Z0-9]+/[a-zA-Z0-9+.-]+$'
+        example: "application/json"
+
+    acceptLanguage:
+      name: Accept-Language
+      in: header
+      description: Preferred response language
+      required: false
+      schema:
+        type: string
+        pattern: '^[a-zA-Z-]+$'
+        example: "en-US"
+
+    # Caching headers
+    ifNoneMatch:
+      name: If-None-Match
+      in: header
+      description: Entity tag for cache validation
+      required: false
+      schema:
+        type: string
+        pattern: '^(W/)?"[^"]*"$'
+        example: "\"33a64df551425fcc55e4d42a148795d9f25f89d4\""
+
+    ifModifiedSince:
+      name: If-Modified-Since
+      in: header
+      description: Last known modification date for cache validation
+      required: false
+      schema:
+        type: string
+        format: http-date
+        pattern: '^(Mon|Tue|Wed|Thu|Fri|Sat|Sun), \d{2} (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4} \d{2}:\d{2}:\d{2} GMT$'
+        example: "Wed, 21 Oct 2015 07:28:00 GMT" 

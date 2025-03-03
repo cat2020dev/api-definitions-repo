@@ -1,0 +1,20 @@
+components:
+  responses:
+    internalServerError:
+      description: Internal Server Error - An unexpected error occurred
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/index.yaml#/components/schemas/responses/errorResponse'
+          example:
+            $ref: '../../examples/common/responses/errors.yaml#/components/examples/responses/errors/internalServerError/value'
+
+    serviceUnavailable:
+      description: Service Unavailable - The service is temporarily unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/index.yaml#/components/schemas/responses/errorResponse'
+          example:
+            $ref: '../../examples/common/responses/errors.yaml#/components/examples/responses/errors/serviceUnavailable/value'
+

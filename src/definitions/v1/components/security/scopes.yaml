@@ -1,0 +1,77 @@
+components:
+  scopes:
+    # Read scope - Basic access level
+    read:
+      description: Read access to API resources
+      permissions:
+        - View bookings and properties
+        - List available resources
+        - Access public information
+      operations:
+        - GET
+      resources:
+        - /online-booking/bookings
+        - /online-booking/bookings/{booking-id}
+        - /online-booking/properties
+        - /online-booking/properties/{property-id}
+      constraints:
+        - Own resources only
+        - Rate limited
+        - Cache enabled
+    
+    # Write scope - Includes read permissions plus write operations
+    write:
+      description: Write access to create, update, and delete API resources
+      inherits: ['read']
+      permissions:
+        - Create new bookings and properties
+        - Update existing resources
+        - Delete owned resources
+      operations:
+        - POST
+        - PUT
+        - DELETE
+      resources:
+        - /online-booking/bookings
+        - /online-booking/bookings/{booking-id}
+        - /online-booking/properties
+        - /online-booking/properties/{property-id}
+      constraints:
+        - Own resources only
+        - Rate limited
+        - Audit logged
+    
+    # Admin scope - Full system access
+    admin:
+      description: Full administrative access to all API resources
+      inherits: ['read', 'write']
+      permissions:
+        - All read and write permissions
+        - System configuration
+        - User management
+      operations:
+        - ALL
+      resources:
+        - /* # All endpoints
+      constraints:
+        - No resource restrictions
+        - Higher rate limits
+        - Audit logged
+        - Access to system endpoints
+
+  # Scope combinations and rules
+  scopeRules:
+    inheritance:
+      enabled: true
+      strategy: "additive"  # Inherited permissions are added to existing ones
+    
+    validation:
+      requireExplicitGrant: true  # Scopes must be explicitly granted
+      allowMultiple: true  # Multiple scopes can be assigned
+      
+    enforcement:
+      strictMode: true  # Must have all required scopes
+      auditLog:
+        enabled: true
+        includeRequest: false  # Don't log request bodies
+        includeResponse: false  # Don't log response bodies

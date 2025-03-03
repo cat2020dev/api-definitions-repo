@@ -1,0 +1,105 @@
+components:
+  schemas:
+    # Pagination Parameters
+    paginationRequest:
+      type: object
+      properties:
+        page:
+          type: integer
+          minimum: 1
+          default: 1
+          example: 1
+          description: Page number (1-based)
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 20
+          example: 20
+          description: Number of items per page
+
+    # Sorting Parameters
+    sortingRequest:
+      type: object
+      properties:
+        sortBy:
+          type: string
+          description: Field to sort by
+          example: "createdAt"
+        sortOrder:
+          type: string
+          enum: [asc, desc]
+          default: desc
+          description: Sort order (ascending or descending)
+          example: "desc"
+
+    # Filter Parameters
+    filterBase:
+      type: object
+      properties:
+        field:
+          type: string
+          description: Field name to filter on
+          example: "status"
+        operator:
+          type: string
+          enum: [eq, neq, gt, gte, lt, lte, in, nin, like, between]
+          description: Filter operator
+          example: "eq"
+        value:
+          description: Filter value(s)
+          example: "active"
+
+    dateRangeFilter:
+      allOf:
+        - $ref: '#/components/schemas/filterBase'
+        - type: object
+          properties:
+            field:
+              enum: [createdAt, updatedAt, date]
+            operator:
+              enum: [eq, neq, gt, gte, lt, lte, between]
+            value:
+              oneOf:
+                - $ref: '../types.yaml#/components/schemas/timestamp'
+                - type: object
+                  properties:
+                    start:
+                      $ref: '../types.yaml#/components/schemas/timestamp'
+                    end:
+                      $ref: '../types.yaml#/components/schemas/timestamp'
+                  required:
+                    - start
+                    - end
+
+    statusFilter:
+      allOf:
+        - $ref: '#/components/schemas/filterBase'
+        - type: object
+          properties:
+            field:
+              enum: [status]
+            operator:
+              enum: [eq, neq, in, nin]
+            value:
+              oneOf:
+                - $ref: '../types.yaml#/components/schemas/status'
+                - type: array
+                  items:
+                    $ref: '../types.yaml#/components/schemas/status'
+
+    searchFilter:
+      type: object
+      properties:
+        query:
+          type: string
+          minLength: 1
+          maxLength: 100
+          description: Search query string
+          example: "beach house"
+        fields:
+          type: array
+          items:
+            type: string
+          description: Fields to search in
+          example: ["name", "description"] 

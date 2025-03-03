@@ -1,0 +1,18 @@
+components:
+  examples:
+    request:
+      summary: Pagination request example
+      value:
+        page: 1
+        limit: 20
+        sort: "-createdAt"
+
+    response:
+      summary: Pagination response example
+      value:
+        totalItems: 100
+        totalPages: 5
+        currentPage: 1
+        itemsPerPage: 20
+        hasNextPage: true
+        hasPreviousPage: false 

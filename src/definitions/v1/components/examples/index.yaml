@@ -1,0 +1,27 @@
+components:
+  examples:
+    # Common examples
+    common:
+      # Headers
+      request_headers:
+        $ref: './common/headers/request.yaml#/components/examples'
+      response_headers:
+        $ref: './common/headers/response.yaml#/components/examples'
+
+      # Pagination
+      pagination:
+        $ref: './common/pagination.yaml#/components/examples'
+
+      # Responses
+      responses:
+        success:
+          $ref: './common/responses/success.yaml#/components/examples'
+        errors:
+          $ref: './common/responses/errors.yaml#/components/examples'
+
+    # Domain-specific examples
+    online_booking:
+      bookings:
+        $ref: './online-booking/bookings.yaml#/components/examples'
+      properties:
+        $ref: './online-booking/properties.yaml#/components/examples'

@@ -1,0 +1,37 @@
+components:
+  responses:
+    badRequest:
+      description: Bad Request - The request was invalid or cannot be served
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/index.yaml#/components/schemas/responses/errorResponse'
+          example:
+            $ref: '../../examples/common/responses/errors.yaml#/components/examples/responses/errors/badRequest/value'
+
+    unauthorized:
+      description: Unauthorized - Authentication is required or has failed
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/index.yaml#/components/schemas/responses/errorResponse'
+          example:
+            $ref: '../../examples/common/responses/errors.yaml#/components/examples/responses/errors/unauthorized/value'
+
+    forbidden:
+      description: Forbidden - The request is not allowed
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/index.yaml#/components/schemas/responses/errorResponse'
+          example:
+            $ref: '../../examples/common/responses/errors.yaml#/components/examples/responses/errors/forbidden/value'
+
+    notFound:
+      description: Not Found - The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/index.yaml#/components/schemas/responses/errorResponse'
+          example:
+            $ref: '../../examples/common/responses/errors.yaml#/components/examples/responses/errors/notFound/value'

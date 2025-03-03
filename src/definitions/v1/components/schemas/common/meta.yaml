@@ -1,6 +1,6 @@
 components:
   schemas:
-    Metadata:
+    meta:
       type: object
       properties:
         createdAt:
@@ -24,3 +24,5 @@ components:
           type: boolean
           default: false
           description: Soft deletion flag for the resource
+        pagination:
+          $ref: './pagination.yaml#/components/schemas/paginationResponse'

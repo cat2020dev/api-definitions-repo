@@ -1,0 +1,107 @@
+components:
+  parameters:
+    # Pagination
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based indexing)
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+        example: 1
+      style: form
+      explode: false
+
+    limit:
+      name: limit
+      in: query
+      description: Number of items per page (min 1, max 100)
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+        example: 20
+      style: form
+      explode: false
+
+    # Filtering
+    status:
+      name: status
+      in: query
+      description: Filter items by status
+      required: false
+      schema:
+        type: string
+        enum: [active, inactive, pending, cancelled]
+        example: "active"
+      style: form
+      explode: false
+
+    dateFrom:
+      name: dateFrom
+      in: query
+      description: Filter items from this date (inclusive)
+      required: false
+      schema:
+        type: string
+        format: date
+        example: "2024-03-01"
+      style: form
+      explode: false
+
+    dateTo:
+      name: dateTo
+      in: query
+      description: Filter items until this date (inclusive)
+      required: false
+      schema:
+        type: string
+        format: date
+        example: "2024-03-31"
+      style: form
+      explode: false
+
+    # Sorting
+    sortBy:
+      name: sortBy
+      in: query
+      description: Field to sort by
+      required: false
+      schema:
+        type: string
+        enum: [createdAt, updatedAt, name, status]
+        default: "createdAt"
+        example: "createdAt"
+      style: form
+      explode: false
+
+    sortOrder:
+      name: sortOrder
+      in: query
+      description: Sort order (ascending or descending)
+      required: false
+      schema:
+        type: string
+        enum: [asc, desc]
+        default: "desc"
+        example: "desc"
+      style: form
+      explode: false
+
+    # Search
+    searchQuery:
+      name: q
+      in: query
+      description: Search query string
+      required: false
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 100
+        example: "beach house"
+      style: form
+      explode: false 

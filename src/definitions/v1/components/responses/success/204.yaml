@@ -1,0 +1,4 @@
+components:
+  responses:
+    noContent:
+      description: No Content - The request has succeeded and there is no content to send back
