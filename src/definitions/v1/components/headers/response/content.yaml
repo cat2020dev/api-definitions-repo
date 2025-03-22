@@ -1,5 +1,5 @@
 components:
-  headers:
+  schemas:
     contentType:
       name: Content-Type
       description: Response payload media type

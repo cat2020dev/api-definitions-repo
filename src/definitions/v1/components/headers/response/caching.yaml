@@ -1,5 +1,5 @@
 components:
-  headers:
+  schemas:
     eTag:
       description: Entity tag for cache validation
       schema:

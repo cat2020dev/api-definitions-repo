@@ -1,5 +1,5 @@
 components:
-  headers:
+  schemas:
     totalCount:
       name: X-Total-Count
       description: Total number of items

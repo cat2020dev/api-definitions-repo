@@ -1,5 +1,5 @@
 components:
-  headers:
+  schemas:
     authorization:
       description: |
         Bearer token for authentication.

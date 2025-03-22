@@ -1,122 +1,28 @@
 components:
   schemas:
-    # Basic Types
     uuid:
       type: string
       format: uuid
       pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'
       example: "123e4567-e89b-12d3-a456-426614174000"
-
     timestamp:
       type: string
       format: date-time
       example: "2024-03-02T12:00:00Z"
-
     date:
       type: string
       format: date
       example: "2024-03-02"
-
     email:
       type: string
       format: email
       pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
       example: "user@example.com"
-
     phone:
       type: string
       pattern: '^\+[1-9]\d{1,14}$'
       example: "+1234567890"
-
-    # Money and Currency
     currency:
       type: string
       pattern: '^[A-Z]{3}$'
       example: "USD"
-
-    money:
-      type: object
-      properties:
-        amount:
-          type: number
-          minimum: 0
-          example: 500.00
-        currency:
-          $ref: '#/components/schemas/currency'
-      required:
-        - amount
-        - currency
-
-    # Location Types
-    country:
-      type: string
-      minLength: 2
-      maxLength: 2
-      pattern: '^[A-Z]{2}$'
-      description: ISO 3166-1 alpha-2 country code
-      example: "US"
-
-    address:
-      type: object
-      properties:
-        street:
-          type: string
-          maxLength: 100
-          example: "123 Main St"
-        street2:
-          type: string
-          maxLength: 100
-          example: "Apt 4B"
-        city:
-          type: string
-          maxLength: 100
-          example: "New York"
-        state:
-          type: string
-          maxLength: 100
-          example: "NY"
-        postalCode:
-          type: string
-          maxLength: 20
-          example: "10001"
-        country:
-          $ref: '#/components/schemas/country'
-      required:
-        - street
-        - city
-        - country
-
-    # Audit and Metadata
-    auditInfo:
-      type: object
-      properties:
-        createdAt:
-          $ref: '#/components/schemas/timestamp'
-        updatedAt:
-          $ref: '#/components/schemas/timestamp'
-        createdBy:
-          $ref: '#/components/schemas/uuid'
-        updatedBy:
-          $ref: '#/components/schemas/uuid'
-      required:
-        - createdAt
-        - createdBy
-
-    metadata:
-      type: object
-      properties:
-        version:
-          type: integer
-          minimum: 1
-          example: 1
-        tags:
-          type: array
-          items:
-            type: string
-          example: ["booking", "online"]
-        attributes:
-          type: object
-          additionalProperties: true
-          example:
-            source: "web"
-            channel: "direct" 

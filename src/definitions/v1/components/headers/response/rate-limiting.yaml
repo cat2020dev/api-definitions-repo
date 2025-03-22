@@ -1,5 +1,5 @@
 components:
-  headers:
+  schemas:
     x-rate-limit:
       description: Request limit per hour based on API key tier
       schema:

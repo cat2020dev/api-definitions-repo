@@ -1,5 +1,5 @@
 components:
-  headers:
+  schemas:
     ifNoneMatch:
       name: If-None-Match
       description: Entity tag for cache validation

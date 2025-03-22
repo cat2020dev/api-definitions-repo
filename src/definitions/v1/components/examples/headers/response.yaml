@@ -1,5 +1,5 @@
 components:
-  examples:
+  schemas:
     # Content information
     contentType:
       summary: Content-Type header example
