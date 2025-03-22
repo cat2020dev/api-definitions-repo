@@ -1,6 +1,6 @@
 {
   "environment": {
-    "name": "Local Development",
+    "name": "Local env",
     "values": [
       {
         "key": "baseUrl",
